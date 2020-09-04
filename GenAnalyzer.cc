@@ -100,8 +100,8 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
   //std::vector<TLorentzVector> Vec_Wboson;
   std::vector<TLorentzVector> Vec_zJET;
   std::vector<TLorentzVector> Vec_Zboson;
-  std::vector<TLorentzVector> Vec_z_on_JET;
-  std::vector<TLorentzVector> Vec_z_off_JET;
+  std::vector<TLorentzVector> Vec_z1JET;
+  std::vector<TLorentzVector> Vec_z2JET;
   std::vector<TLorentzVector> Vec_Higgs;
 
   //  std::cout << "Size = " << genps_coll->size() << std::endl;
@@ -155,22 +155,22 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     J2J3_Z=abs((Vec_zJET[2]+Vec_zJET[3]).M()-90);
 
     if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J0J1_Z){
-      Vec_z_on_JET.push(Vec_zJET[0]);
-      Vec_z_on_JET.push(Vec_zJET[1]);
-      Vec_z_off_JET.push(Vec_zJET[2]);
-      Vec_z_off_JET.push(Vec_zJET[3]);
+      Vec_z1JET.push(Vec_zJET[0]);
+      Vec_z1JET.push(Vec_zJET[1]);
+      Vec_z2JET.push(Vec_zJET[2]);
+      Vec_z2JET.push(Vec_zJET[3]);
     }
     if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J0J2_Z){
-      Vec_z_on_JET.push(Vec_zJET[0]);
-      Vec_z_on_JET.push(Vec_zJET[2]);
-      Vec_z_off_JET.push(Vec_zJET[1]);
-      Vec_z_off_JET.push(Vec_zJET[3]);
+      Vec_z1JET.push(Vec_zJET[0]);
+      Vec_z1JET.push(Vec_zJET[2]);
+      Vec_z2JET.push(Vec_zJET[1]);
+      Vec_z2JET.push(Vec_zJET[3]);
     }
     if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J0J3_Z){
-      Vec_z_on_JET.push(Vec_zJET[0]);
-      Vec_z_on_JET.push(Vec_zJET[3]);
-      Vec_z_off_JET.push(Vec_zJET[1]);
-      Vec_z_off_JET.push(Vec_zJET[2]);
+      Vec_z1JET.push(Vec_zJET[0]);
+      Vec_z1JET.push(Vec_zJET[3]);
+      Vec_z2JET.push(Vec_zJET[1]);
+      Vec_z2JET.push(Vec_zJET[2]);
     }
     if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J1J2_Z){
       Vec_z_on_JET.push(Vec_zJET[1]);
@@ -179,22 +179,22 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
       Vec_z_off_JET.push(Vec_zJET[3]);
     }
     if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J1J3_Z){
-      Vec_z_on_JET.push(Vec_zJET[1]);
-      Vec_z_on_JET.push(Vec_zJET[3]);
-      Vec_z_off_JET.push(Vec_zJET[0]);
-      Vec_z_off_JET.push(Vec_zJET[2]);
+      Vec_z1JET.push(Vec_zJET[1]);
+      Vec_z1JET.push(Vec_zJET[3]);
+      Vec_z2JET.push(Vec_zJET[0]);
+      Vec_z2JET.push(Vec_zJET[2]);
     }
     if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J2J3_Z){
-      Vec_z_on_JET.push(Vec_zJET[2]);
-      Vec_z_on_JET.push(Vec_zJET[3]);
-      Vec_z_off_JET.push(Vec_zJET[0]);
-      Vec_z_off_JET.push(Vec_zJET[1]);
+      Vec_z1JET.push(Vec_zJET[2]);
+      Vec_z1JET.push(Vec_zJET[3]);
+      Vec_z2JET.push(Vec_zJET[0]);
+      Vec_z2JET.push(Vec_zJET[1]);
     }
 
 
     /*  Form the Z-bosons 4-Vectors   */
-    Vec_Zboson.push_back(Vec_z_on_JET[0]+Vec_z_on_JET[1]);
-    Vec_Zboson.push_back(Vec_z_off_JET[0]+Vec_z_off_JET[1]);
+    Vec_Zboson.push_back(Vec_z1JET[0]+Vec_z1JET[1]);
+    Vec_Zboson.push_back(Vec_z2JET[0]+Vec_z2JET[1]);
 
 
     /*  Form the W-bosons 4-Vectors   */
@@ -207,8 +207,8 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
 
     /*  Sort each TLorentzVectors */
     std::sort(Vec_Photons.begin(), Vec_Photons.end(), GenAnalyzer::reorder);
-    std::sort(Vec_z_on_JET.begin(), Vec_z_on_JET.end(), GenAnalyzer::reorder);
-    std::sort(Vec_z_off_JET.begin(), Vec_z_off_JET.end(), GenAnalyzer::reorder);
+    std::sort(Vec_z1JET.begin(), Vec_z1JET.end(), GenAnalyzer::reorder);
+    std::sort(Vec_z2JET.begin(), Vec_z2JET.end(), GenAnalyzer::reorder);
     //std::sort(Vec_wpJET.begin(), Vec_wpJET.end(), GenAnalyzer::reorder);
     //std::sort(Vec_wmJET.begin(), Vec_wmJET.end(), GenAnalyzer::reorder);
     std::sort(Vec_Wboson.begin(), Vec_Wboson.end(), GenAnalyzer::reorder);
@@ -230,25 +230,25 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     gen_Subleading_photon_Phi_     = Vec_Photons[1].Phi();
     gen_Subleading_photon_M_   = Vec_Photons[1].M() ;
 
-    gen_leading_Z_on_Jets_Pt_  = Vec_z_on_JET[0].Pt();
-    gen_leading_Z_on_Jets_Eta_  = Vec_z_on_JET[0].Eta();
-    gen_leading_Z_on_Jets_Phi_  = Vec_z_on_JET[0].Phi();
-    gen_leading_Z_on_Jets_M_  = Vec_z_on_JET[0].M();
+    gen_leading_Z1Jets_Pt_  = Vec_z1JET[0].Pt();
+    gen_leading_Z1Jets_Eta_  = Vec_z1JET[0].Eta();
+    gen_leading_Z1Jets_Phi_  = Vec_z1JET[0].Phi();
+    gen_leading_Z1Jets_M_  = Vec_z1JET[0].M();
 
-    gen_Subleading_Z_on_Jets_Pt_  = Vec_z_on_JET[1].Pt();
-    gen_Subleading_Z_on_Jets_Eta_  = Vec_z_on_JET[1].Eta();
-    gen_Subleading_Z_on_Jets_Phi_  = Vec_z_on_JET[1].Phi();
-    gen_Subleading_Z_on_Jets_M_  = Vec_z_on_JET[1].M();
+    gen_Subleading_Z1Jets_Pt_  = Vec_z1JET[1].Pt();
+    gen_Subleading_Z1Jets_Eta_  = Vec_z1JET[1].Eta();
+    gen_Subleading_Z1Jets_Phi_  = Vec_z1JET[1].Phi();
+    gen_Subleading_Z1Jets_M_  = Vec_z1JET[1].M();
 
-    gen_leading_Z_off_Jets_Pt_  = Vec_z_off_JET[0].Pt();
-    gen_leading_Z_off_Jets_Eta_  = Vec_z_off_JET[0].Eta();
-    gen_leading_Z_off_Jets_Phi_  = Vec_z_off_JET[0].Phi();
-    gen_leading_Z_off_Jets_M_  = Vec_z_off_JET[0].M();
+    gen_leading_Z2Jets_Pt_  = Vec_z2JET[0].Pt();
+    gen_leading_Z2Jets_Eta_  = Vec_z2JET[0].Eta();
+    gen_leading_Z2Jets_Phi_  = Vec_z2JET[0].Phi();
+    gen_leading_Z2Jets_M_  = Vec_z2JET[0].M();
 
-    gen_Subleading_Z_off_Jets_Pt_  = Vec_z_off_JET[1].Pt();
-    gen_Subleading_Z_off_Jets_Eta_  = Vec_z_off_JET[1].Eta();
-    gen_Subleading_Z_off_Jets_Phi_  = Vec_z_off_JET[1].Phi();
-    gen_Subleading_Z_off_Jets_M_  = Vec_z_off_JET[1].M();
+    gen_Subleading_Z2Jets_Pt_  = Vec_z2JET[1].Pt();
+    gen_Subleading_Z2Jets_Eta_  = Vec_z2JET[1].Eta();
+    gen_Subleading_Z2Jets_Phi_  = Vec_z2JET[1].Phi();
+    gen_Subleading_Z2Jets_M_  = Vec_z2JET[1].M();
 
     gen_leading_ZBoson_Pt_  = Vec_Zboson[0].Pt();
     gen_leading_ZBoson_Eta_  = Vec_Zboson[0].Eta();
@@ -290,24 +290,24 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
      *************************************************************************/
     gen_deltaR_Photon0_Photon1_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_Photons[1].Eta(),Vec_Photons[1].Phi());
 
-    gen_deltaR_Photon0_WmJ0_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_wmJET[0].Eta(),Vec_wmJET[0].Phi());
-    gen_deltaR_Photon0_WmJ1_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_wmJET[1].Eta(),Vec_wmJET[1].Phi());
-    gen_deltaR_Photon0_WpJ0_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi());
-    gen_deltaR_Photon0_WpJ1_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi());
+    gen_deltaR_Photon0_Z1J0_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_z1JET[0].Eta(),Vec_z1JET[0].Phi());
+    gen_deltaR_Photon0_Z1J1_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi());
+    gen_deltaR_Photon0_Z2J0_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
+    gen_deltaR_Photon0_Z2J1_ = deltaR(Vec_Photons[0].Eta(),Vec_Photons[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
 
-    gen_deltaR_Photon1_WmJ0_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_wmJET[0].Eta(),Vec_wmJET[0].Phi());
-    gen_deltaR_Photon1_WmJ1_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_wmJET[1].Eta(),Vec_wmJET[1].Phi());
-    gen_deltaR_Photon1_WpJ0_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi());
-    gen_deltaR_Photon1_WpJ1_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi());
+    gen_deltaR_Photon1_Z1J0_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_z1JET[0].Eta(),Vec_z1JET[0].Phi());
+    gen_deltaR_Photon1_Z1J1_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi());
+    gen_deltaR_Photon1_Z2J0_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
+    gen_deltaR_Photon1_Z2J1_ = deltaR(Vec_Photons[1].Eta(),Vec_Photons[1].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
 
-    gen_deltaR_WpJ0_WpJ1_    = deltaR(Vec_wpJET[0].Eta(),Vec_wpJET[0].Phi(), Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi());
-    gen_deltaR_WpJ0_WmJ0_    = deltaR(Vec_wpJET[0].Eta(),Vec_wpJET[0].Phi(), Vec_wmJET[0].Eta(),Vec_wmJET[0].Phi());
-    gen_deltaR_WpJ0_WmJ1_    = deltaR(Vec_wpJET[0].Eta(),Vec_wpJET[0].Phi(), Vec_wmJET[1].Eta(),Vec_wmJET[1].Phi());
-    gen_deltaR_WpJ1_WmJ0_    = deltaR(Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi(), Vec_wmJET[0].Eta(),Vec_wmJET[0].Phi());
-    gen_deltaR_WpJ1_WmJ1_    = deltaR(Vec_wpJET[1].Eta(),Vec_wpJET[1].Phi(), Vec_wmJET[1].Eta(),Vec_wmJET[1].Phi());
-    gen_deltaR_WmJ0_WmJ1_    = deltaR(Vec_wmJET[0].Eta(),Vec_wmJET[0].Phi(), Vec_wmJET[1].Eta(),Vec_wmJET[1].Phi());
+    gen_deltaR_Z1J0_Z1J1_    = deltaR(Vec_z1JET[0].Eta(),Vec_z1JET[0].Phi(), Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi());
+    gen_deltaR_Z1J0_Z2J0_    = deltaR(Vec_z1JET[0].Eta(),Vec_z1JET[0].Phi(), Vec_z2JET[0].Eta(),Vec_z2JET[0].Phi());
+    gen_deltaR_Z1J0_Z2J1_    = deltaR(Vec_z1JET[0].Eta(),Vec_z1JET[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
+    gen_deltaR_Z1J1_Z2J0_    = deltaR(Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi(), Vec_z2JET[0].Eta(),Vec_z2JET[0].Phi());
+    gen_deltaR_Z1J1_Z2J1_    = deltaR(Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
+    gen_deltaR_WmJ0_Z2J1_    = deltaR(Vec_z2JET[0].Eta(),Vec_z2JET[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
 
-    gen_deltaR_Wp_Wm_    = deltaR(Vec_Wboson[0].Eta(), Vec_Wboson[0].Phi(), Vec_Wboson[1].Eta(), Vec_Wboson[1].Phi());
+    gen_deltaR_Z1_Z2_    = deltaR(Vec_Wboson[0].Eta(), Vec_Wboson[0].Phi(), Vec_Wboson[1].Eta(), Vec_Wboson[1].Phi());
     gen_deltaR_H1_H2_    = deltaR(Vec_Higgs[0].Eta(), Vec_Higgs[0].Phi(), Vec_Higgs[1].Eta(), Vec_Higgs[1].Phi());
     //gen_dPhijj_ = (float) deltaPhi(vJET[0].Phi(),vJET[1].Phi());
 
