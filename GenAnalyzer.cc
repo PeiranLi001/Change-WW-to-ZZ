@@ -212,7 +212,7 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     std::sort(Vec_z2JET.begin(), Vec_z2JET.end(), GenAnalyzer::reorder);
     //std::sort(Vec_wpJET.begin(), Vec_wpJET.end(), GenAnalyzer::reorder);
     //std::sort(Vec_wmJET.begin(), Vec_wmJET.end(), GenAnalyzer::reorder);
-    std::sort(Vec_Wboson.begin(), Vec_Wboson.end(), GenAnalyzer::reorder);
+    std::sort(Vec_Zboson.begin(), Vec_Zboson.end(), GenAnalyzer::reorder);
     /*	We did not sort the Higgs boson as I need to know which Higgs is reconstructed from W-boson and which one from photons	*/
     //std::sort(Vec_Higgs.begin(), Vec_Higgs.end(), GenAnalyzer::reorder);
 
