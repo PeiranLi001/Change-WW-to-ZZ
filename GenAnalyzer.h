@@ -308,8 +308,8 @@ private:
   double AK4GEN_AllResolved_onShellZboson_Eta_  = -999.0;
   double AK4GEN_AllResolved_onShellZboson_Phi_  = -999.0;
   double AK4GEN_AllResolved_onShellZboson_M_  = -999.0;
-  double AK4GEN_AllResolved_onShellZboson_dR_W0PID_ = -999.0;
-  double AK4GEN_AllResolved_onShellZboson_dR_W1PID_ = -999.0;
+  double AK4GEN_AllResolved_onShellZboson_dR_Z0PID_ = -999.0;
+  double AK4GEN_AllResolved_onShellZboson_dR_Z1PID_ = -999.0;
   double AK4GEN_AllResolved_offShellZboson_Pt_  = -999.0;
   double AK4GEN_AllResolved_offShellZboson_Eta_ = -999.0;
   double AK4GEN_AllResolved_offShellZboson_Phi_ = -999.0;
@@ -359,8 +359,8 @@ private:
   double OneAK8TwoAK4_pTMax_ReconsH_Eta_  = -999.0;
   double OneAK8TwoAK4_pTMax_ReconsH_Phi_  = -999.0;
   double OneAK8TwoAK4_pTMax_ReconsH_M_  = -999.0;
-  double OneAK8TwoAK4_pTMax_ReconsH_dR_W1_  = -999.0;
-  double OneAK8TwoAK4_pTMax_ReconsH_dR_W2_  = -999.0;
+  double OneAK8TwoAK4_pTMax_ReconsH_dR_Z1_  = -999.0;
+  double OneAK8TwoAK4_pTMax_ReconsH_dR_Z2_  = -999.0;
   double OneAK8TwoAK4_pTMax_ReconsH_dR_H1_  = -999.0;
   double OneAK8TwoAK4_pTMax_ReconsH_dR_H2_  = -999.0;
 
