@@ -306,9 +306,9 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     gen_deltaR_Z1J0_Z2J1_    = deltaR(Vec_z1JET[0].Eta(),Vec_z1JET[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
     gen_deltaR_Z1J1_Z2J0_    = deltaR(Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi(), Vec_z2JET[0].Eta(),Vec_z2JET[0].Phi());
     gen_deltaR_Z1J1_Z2J1_    = deltaR(Vec_z1JET[1].Eta(),Vec_z1JET[1].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
-    gen_deltaR_WmJ0_Z2J1_    = deltaR(Vec_z2JET[0].Eta(),Vec_z2JET[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
+    gen_deltaR_Z2J0_Z2J1_    = deltaR(Vec_z2JET[0].Eta(),Vec_z2JET[0].Phi(), Vec_z2JET[1].Eta(),Vec_z2JET[1].Phi());
 
-    gen_deltaR_Z1_Z2_    = deltaR(Vec_Wboson[0].Eta(), Vec_Wboson[0].Phi(), Vec_Wboson[1].Eta(), Vec_Wboson[1].Phi());
+    gen_deltaR_Z1_Z2_    = deltaR(Vec_Zboson[0].Eta(), Vec_Zboson[0].Phi(), Vec_Zboson[1].Eta(), Vec_Zboson[1].Phi());
     gen_deltaR_H1_H2_    = deltaR(Vec_Higgs[0].Eta(), Vec_Higgs[0].Phi(), Vec_Higgs[1].Eta(), Vec_Higgs[1].Phi());
     //gen_dPhijj_ = (float) deltaPhi(vJET[0].Phi(),vJET[1].Phi());
 
