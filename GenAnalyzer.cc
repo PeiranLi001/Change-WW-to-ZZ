@@ -135,63 +135,25 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     // pdgID_.push_back(genps_it->pdgId());
     // } /* END if condition of wjETs */
   }
-  double J0J1_Z;
-  double J0J2_Z;
-  double J0J3_Z;
-  double J1J2_Z;
-  double J1J3_Z;
-  double J2J3_Z;
-  
+
+
   if (Vec_Photons.size()==2 &&  Vec_zJET.size()==4)
   {
     if (Verbose_) cout<<"Event selected"<<nEVENT<<endl;
     nEVENT++;
 
     // find the closest combination jets to Z boson's mass
-    J0J1_Z=abs((Vec_zJET[0]+Vec_zJET[1]).M()-90);
-    J0J2_Z=abs((Vec_zJET[0]+Vec_zJET[2]).M()-90);
-    J0J3_Z=abs((Vec_zJET[0]+Vec_zJET[3]).M()-90);
-    J1J2_Z=abs((Vec_zJET[1]+Vec_zJET[2]).M()-90);
-    J1J3_Z=abs((Vec_zJET[1]+Vec_zJET[3]).M()-90);
-    J2J3_Z=abs((Vec_zJET[2]+Vec_zJET[3]).M()-90);
-
-    if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J0J1_Z){
-      Vec_z1JET.push(Vec_zJET[0]);
-      Vec_z1JET.push(Vec_zJET[1]);
-      Vec_z2JET.push(Vec_zJET[2]);
-      Vec_z2JET.push(Vec_zJET[3]);
-    }
-    if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J0J2_Z){
-      Vec_z1JET.push(Vec_zJET[0]);
-      Vec_z1JET.push(Vec_zJET[2]);
-      Vec_z2JET.push(Vec_zJET[1]);
-      Vec_z2JET.push(Vec_zJET[3]);
-    }
-    if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J0J3_Z){
-      Vec_z1JET.push(Vec_zJET[0]);
-      Vec_z1JET.push(Vec_zJET[3]);
-      Vec_z2JET.push(Vec_zJET[1]);
-      Vec_z2JET.push(Vec_zJET[2]);
-    }
-    if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J1J2_Z){
-      Vec_z_on_JET.push(Vec_zJET[1]);
-      Vec_z_on_JET.push(Vec_zJET[2]);
-      Vec_z_off_JET.push(Vec_zJET[0]);
-      Vec_z_off_JET.push(Vec_zJET[3]);
-    }
-    if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J1J3_Z){
-      Vec_z1JET.push(Vec_zJET[1]);
-      Vec_z1JET.push(Vec_zJET[3]);
-      Vec_z2JET.push(Vec_zJET[0]);
-      Vec_z2JET.push(Vec_zJET[2]);
-    }
-    if (min(J0J1_Z, J0J2_Z, J0J1_Z, J0J1_Z, J0J1_Z, J0J1_Z)==J2J3_Z){
-      Vec_z1JET.push(Vec_zJET[2]);
-      Vec_z1JET.push(Vec_zJET[3]);
-      Vec_z2JET.push(Vec_zJET[0]);
-      Vec_z2JET.push(Vec_zJET[1]);
-    }
-
+    int Z1_index1 = -1;
+    int Z1_index2 = -1;
+    int Z2_index1 = -1;
+    int Z2_index2 = -1;
+    indexOfSelectedJet(Vec_zJET, Z1_index1, Z1_index2);
+    indexOfSelectedJet(Vec_zJET, 125.0, Z2_index1, Z2_index2, Z1_index1, Z1_index2);
+    Vec_z1JET.push_back(Vec_zJET[Z1_index1]);
+    Vec_z1JET.push_back(Vec_zJET[Z1_index2]);
+    Vec_z2JET.push_back(Vec_zJET[Z2_index1]);
+    Vec_z2JET.push_back(Vec_zJET[Z2_index2]);
+    
 
     /*  Form the Z-bosons 4-Vectors   */
     Vec_Zboson.push_back(Vec_z1JET[0]+Vec_z1JET[1]);
@@ -377,7 +339,7 @@ GenAnalyzer::analyze(const edm::Event& iEvent, const edm::EventSetup& iSetup)
     AK4GEN_AllResolved_onShellJet2_M_ = Vec_genJetAK4[onshell_ZBoson_index2].M();
     AK4GEN_AllResolved_onShellJets_dR_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index1].Eta(), Vec_genJetAK4[onshell_ZBoson_index1].Phi(), Vec_genJetAK4[onshell_ZBoson_index2].Eta(), Vec_genJetAK4[onshell_ZBoson_index2].Phi());
     AK4GEN_AllResolved_onShellJet2_dR_q1_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index2].Eta(),Vec_genJetAK4[onshell_ZBoson_index2].Phi(), Vec_z1JET[0].Eta(), Vec_z1JET[0].Phi());
-    AK4GEN_AllResolved_onShellJet2_dR_q2_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index2].Eta(),Vec_genJetAK4[onshellZ_ZBoson_index2].Phi(), Vec_z1JET[1].Eta(), Vec_z1JET[1].Phi());
+    AK4GEN_AllResolved_onShellJet2_dR_q2_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index2].Eta(),Vec_genJetAK4[onshell_ZBoson_index2].Phi(), Vec_z1JET[1].Eta(), Vec_z1JET[1].Phi());
     AK4GEN_AllResolved_onShellJet2_dR_q3_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index2].Eta(),Vec_genJetAK4[onshell_ZBoson_index2].Phi(), Vec_z2JET[0].Eta(), Vec_z2JET[0].Phi());
     AK4GEN_AllResolved_onShellJet2_dR_q4_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index2].Eta(),Vec_genJetAK4[onshell_ZBoson_index2].Phi(), Vec_z2JET[1].Eta(), Vec_z2JET[1].Phi());
     AK4GEN_AllResolved_onShellJet2_dR_g1_ = deltaR(Vec_genJetAK4[onshell_ZBoson_index2].Eta(),Vec_genJetAK4[onshell_ZBoson_index2].Phi(), Vec_Photons[0].Eta(), Vec_Photons[0].Phi());
