@@ -84,7 +84,7 @@ void matchWW(){
   double gen_offShell_WBoson_Pt;
   double gen_HiggsWW_Pt;
   double gen_HiggsWW_Eta;
-  double gen_HiggsWW_Phi
+  double gen_HiggsWW_Phi;
 
   double gen_leading_ZBoson_Pt;
   double gen_Subleading_ZBoson_Pt;
@@ -126,6 +126,7 @@ void matchWW(){
   double AK8Gen_HiggsJet_minDMass_Pt;
   double AK8Gen_HiggsJet_minDMass_Eta;
   double AK8Gen_HiggsJet_minDMass_Phi;
+  double AK8Gen_HiggsJet_MaxPt_M;
   double AK8Gen_HiggsJet_MaxPt_Pt;
   double AK8Gen_HiggsJet_MaxPt_Eta;
   double AK8Gen_HiggsJet_MaxPt_Phi;
@@ -180,6 +181,7 @@ void matchWW(){
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Pt",&AK8Gen_HiggsJet_minDMass_Pt);
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Eta",&AK8Gen_HiggsJet_minDMass_Eta);
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Phi",&AK8Gen_HiggsJet_minDMass_Phi);
+  t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_M",&AK8Gen_HiggsJet_MaxPt_M);
   t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_Pt",&AK8Gen_HiggsJet_MaxPt_Pt);
   t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_Eta",&AK8Gen_HiggsJet_MaxPt_Eta);
   t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_Phi",&AK8Gen_HiggsJet_MaxPt_Phi);
