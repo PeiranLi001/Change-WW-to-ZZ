@@ -185,9 +185,8 @@ void matchWW(){
 
   
   //define new variable for plot
-  std::vector<double> AK4GEN_AllResolved_dR_J_q;
   double tempdR = 999.0;
-  vector<int> indexJq(4,-1);
+
 
   int entries1=t1->GetEntries();
   int entries2=t2->GetEntries();
@@ -196,6 +195,8 @@ void matchWW(){
   
   for (int i=0; i<entries1; ++i){
     t1->GetEntry(i);
+    vector<double> AK4GEN_AllResolved_dR_J_q(4);
+    vector<int> indexJq(4,-1);
     vector<double> Eta_q(4);
     vector<double> Phi_q(4);
     vector<double> Eta_AK4jet(4);
