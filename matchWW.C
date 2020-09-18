@@ -190,9 +190,9 @@ void matchWW(){
 
 
   int entries1=t1->GetEntries();
-  int entries2=t2->GetEntries();
+  //int entries2=t2->GetEntries();
   std::cout <<"entries:"<<entries1<<std::endl;
-  std::cout <<"entries:"<<entries2<<std::endl;
+  //std::cout <<"entries:"<<entries2<<std::endl;
   
   for (int i=0; i<entries1; ++i){
     t1->GetEntry(i);
