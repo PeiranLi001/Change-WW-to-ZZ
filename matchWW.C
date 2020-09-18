@@ -140,6 +140,15 @@ void matchWW(){
   t1->SetBranchAddress("AK4GEN_AllResolved_dR_J4_offShell_q",&AK4GEN_AllResolved_dR_J4_offShell_q);
   
   t1->SetBranchAddress("genJetAK4_njets",&genJetAK4_njets);
+
+  t1->SetBranchAddress("AK4GEN_AllResolved_onShellJet1_Eta",&AK4GEN_AllResolved_onShellJet1_Eta);
+  t1->SetBranchAddress("AK4GEN_AllResolved_onShellJet2_Eta",&AK4GEN_AllResolved_onShellJet2_Eta);
+  t1->SetBranchAddress("AK4GEN_AllResolved_offShellJet1_Eta",&AK4GEN_AllResolved_offShellJet1_Eta);
+  t1->SetBranchAddress("AK4GEN_AllResolved_offShellJet2_Eta",&AK4GEN_AllResolved_offShellJet2_Eta);
+  t1->SetBranchAddress("AK4GEN_AllResolved_onShellJet1_Phi",&AK4GEN_AllResolved_onShellJet1_Phi);
+  t1->SetBranchAddress("AK4GEN_AllResolved_onShellJet2_Phi",&AK4GEN_AllResolved_onShellJet2_Phi);
+  t1->SetBranchAddress("AK4GEN_AllResolved_offShellJet1_Phi",&AK4GEN_AllResolved_offShellJet1_Phi);
+  t1->SetBranchAddress("AK4GEN_AllResolved_offShellJet2_Phi",&AK4GEN_AllResolved_offShellJet2_Phi);
   t1->SetBranchAddress("AK4GEN_AllResolved_onShellWboson_Pt",&AK4GEN_AllResolved_onShellWboson_Pt);
   t1->SetBranchAddress("AK4GEN_AllResolved_offShellWboson_Pt",&AK4GEN_AllResolved_offShellWboson_Pt);
   t1->SetBranchAddress("AK4GEN_AllResolved_onShellWboson_M",&AK4GEN_AllResolved_onShellWboson_M);
