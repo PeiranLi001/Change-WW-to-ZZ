@@ -3,7 +3,7 @@
 #include <vector>
 #include "TH1F.h"
 #include "TLorentzVector.h"
-void makeplot(){
+void matchWW(){
 
   TFile *f1 = TFile::Open("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/GF_HH_SM_slc6_LHEBqrk.root");
   TFile *f2 = TFile::Open("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/GF_HH_SM_slc6_LHEBqrk_ZZ.root");
