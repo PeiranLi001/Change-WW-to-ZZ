@@ -1,4 +1,8 @@
+#include "DataFormats/Math/interface/deltaR.h"
+#include "DataFormats/Math/interface/deltaPhi.h"
+#include "<vector>"
 #include "TH1F.h"
+#include "TLorentzVector.h"
 void makeplot(){
 
   TFile *f1 = TFile::Open("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/GF_HH_SM_slc6_LHEBqrk.root");
@@ -35,17 +39,32 @@ void makeplot(){
   TH1F *HOneAK8TwoAK4_minMass_dR_AK8_W = new TH1F("HOneAK8TwoAK4_minMass_dR_AK8_W","HOneAK8TwoAK4_minMass_dR_AK8_W",25,0,4.5);
   TH1F *HOneAK8TwoAK4_pTMax_leadingAK4_dR_q = new TH1F("HOneAK8TwoAK4_pTMax_leadingAK4_dR_q","HOneAK8TwoAK4_pTMax_leadingAK4_dR_q",25,0,4.5);
   TH1F *HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q = new TH1F("HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q","HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q",25,0,4.5);
-  ;
+  
+  TH1F *AK4_AllResolved_dR_J1_q = new TH1F("AK4_AllResolved_dR_J1_q","AK4_AllResolved_dR_J1_q;dR(J1,q);Normalized Events",25,0,4.5);
+  TH1F *AK4_AllResolved_dR_J2_q = new TH1F("AK4_AllResolved_dR_J2_q","AK4_AllResolved_dR_J2_q;dR(J2,q);Normalized Events",25,0,4.5);
+  TH1F *AK4_AllResolved_dR_J3_q = new TH1F("AK4_AllResolved_dR_J3_q","AK4_AllResolved_dR_J3_q;dR(J3,q);Normalized Events",25,0,4.5);
+  TH1F *AK4_AllResolved_dR_J4_q = new TH1F("AK4_AllResolved_dR_J4_q","AK4_AllResolved_dR_J4_q;dR(J4,q);Normalized Events",25,0,4.5);
+  
+	
   
 
 
   vector<double> countnumber(20,0);
+	
   
   double gen_leading_photon_Pt;
   double gen_leading_WpJets_Pt;
+  double gen_leading_WpJets_Eta;
+  double gen_leading_WpJets_Phi;
   double gen_leading_WmJets_Pt;
+  double gen_leading_WmJets_Eta;
+  double gen_leading_WmJets_Phi;
   double gen_Subleading_WpJets_Pt;
+  double gen_Subleading_WpJets_Eta;
+  double gen_Subleading_WpJets_Phi;
   double gen_Subleading_WmJets_Pt;
+  double gen_Subleading_WmJets_Eta;
+  double gen_Subleading_WmJets_Phi;
   double gen_leading_WBoson_Pt;
   double gen_Subleading_WBoson_Pt;
   double gen_leading_WBoson_M;
@@ -60,6 +79,14 @@ void makeplot(){
   double gen_onShell_ZBoson_Pt;
   double gen_offShell_ZBoson_Pt;
 
+  double AK4GEN_AllResolved_onShellJet1_Eta;
+  double AK4GEN_AllResolved_onShellJet1_Phi;
+  double AK4GEN_AllResolved_onShellJet2_Eta;
+  double AK4GEN_AllResolved_onShellJet2_Phi;
+  double AK4GEN_AllResolved_offShellJet1_Eta;
+  double AK4GEN_AllResolved_offShellJet1_Phi;
+  double AK4GEN_AllResolved_offShellJet2_Eta;
+  double AK4GEN_AllResolved_offShellJet2_Phi;
   double AK4GEN_AllResolved_dR_J1_onShell_q;
   double AK4GEN_AllResolved_dR_J2_onShell_q;
   double AK4GEN_AllResolved_dR_J3_offShell_q;
@@ -83,15 +110,25 @@ void makeplot(){
   double AK8Gen_HiggsJet_minDMass_deltaR_HWW;
   double AK8Gen_HiggsJet_minDMass_M;
   double AK8Gen_HiggsJet_minDMass_Pt;
+  double AK8Gen_HiggsJet_minDMass_Eta;
+  double AK8Gen_HiggsJet_minDMass_Phi;
   double OneAK8TwoAK4_pTMax_leadingAK4_dR_q;
   double OneAK8TwoAK4_pTMax_subleadingAK4_dR_q;
 
 
   t1->SetBranchAddress("gen_leading_photon_Pt",&gen_leading_photon_Pt);
   t1->SetBranchAddress("gen_leading_WpJets_Pt",&gen_leading_WpJets_Pt);
+  t1->SetBranchAddress("gen_leading_WpJets_Eta",&gen_leading_WpJets_Eta);
+  t1->SetBranchAddress("gen_leading_WpJets_Phi",&gen_leading_WpJets_Phi);
   t1->SetBranchAddress("gen_leading_WmJets_Pt",&gen_leading_WmJets_Pt);
+  t1->SetBranchAddress("gen_leading_WmJets_Eta",&gen_leading_WmJets_Eta);
+  t1->SetBranchAddress("gen_leading_WmJets_Phi",&gen_leading_WmJets_Phi);
   t1->SetBranchAddress("gen_Subleading_WpJets_Pt",&gen_Subleading_WpJets_Pt);
+  t1->SetBranchAddress("gen_Subleading_WpJets_Eta",&gen_Subleading_WpJets_Eta);
+  t1->SetBranchAddress("gen_Subleading_WpJets_Phi",&gen_Subleading_WpJets_Phi);
   t1->SetBranchAddress("gen_Subleading_WmJets_Pt",&gen_Subleading_WmJets_Pt);
+  t1->SetBranchAddress("gen_Subleading_WmJets_Eta",&gen_Subleading_WmJets_Eta);
+  t1->SetBranchAddress("gen_Subleading_WmJets_Phi",&gen_Subleading_WmJets_Phi);
   t1->SetBranchAddress("gen_leading_WBoson_Pt",&gen_leading_WBoson_Pt);
   t1->SetBranchAddress("gen_Subleading_WBoson_Pt",&gen_Subleading_WBoson_Pt);
   t1->SetBranchAddress("gen_leading_WBoson_M",&gen_leading_WBoson_M);
@@ -112,6 +149,9 @@ void makeplot(){
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_deltaR_HWW",&AK8Gen_HiggsJet_minDMass_deltaR_HWW);
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_M",&AK8Gen_HiggsJet_minDMass_M);
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Pt",&AK8Gen_HiggsJet_minDMass_Pt);
+  t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Eta",&AK8Gen_HiggsJet_minDMass_Eta);
+  t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Phi",&AK8Gen_HiggsJet_minDMass_Phi);
+  
   t1->SetBranchAddress("AK8Gen_MergedWjets_dR_MaxPt_Leading_W",&AK8Gen_MergedWjets_dR_MaxPt_Leading_W);
   t1->SetBranchAddress("AK8Gen_MergedWjets_dR_MaxPt_SubLeading_W",&AK8Gen_MergedWjets_dR_MaxPt_SubLeading_W);
   t1->SetBranchAddress("AK8Gen_MergedWjets_dR_minDMass_Leading_W",&AK8Gen_MergedWjets_dR_minDMass_Leading_W);
@@ -132,8 +172,32 @@ void makeplot(){
   t2->SetBranchAddress("AK4GEN_AllResolved_offShellZboson_Pt",&AK4GEN_AllResolved_offShellZboson_Pt);
   
 
+  std::vector<double> Eta_q;
+  std::vector<double> Phi_q;
+  std::vector<double> Eta_AK4jet;
+  std::vector<double> Phi_AK4jet;
+  Eta_q.push_back(gen_leading_WpJets_Eta);
+  Eta_q.push_back(gen_Subleading_WpJets_Eta);
+  Eta_q.push_back(gen_leading_WmJets_Eta);
+  Eta_q.push_back(gen_Subleading_WmJets_Eta);
+  Eta_AK4jet.push_back(AK4GEN_AllResolved_onShellJet1_Eta);
+  Eta_AK4jet.push_back(AK4GEN_AllResolved_onShellJet2_Eta);
+  Eta_AK4jet.push_back(AK4GEN_AllResolved_offShellJet1_Eta);
+  Eta_AK4jet.push_back(AK4GEN_AllResolved_offShellJet2_Eta);
   
+  Phi_q.push_back(gen_leading_WpJets_Eta);
+  Phi_q.push_back(gen_Subleading_WpJets_Eta);
+  Phi_q.push_back(gen_leading_WmJets_Eta);
+  Phi_q.push_back(gen_Subleading_WmJets_Eta);
+  Phi_AK4jet.push_back(AK4GEN_AllResolved_onShellJet1_Phi);
+  Phi_AK4jet.push_back(AK4GEN_AllResolved_onShellJet2_Phi);
+  Phi_AK4jet.push_back(AK4GEN_AllResolved_offShellJet1_Phi);
+  Phi_AK4jet.push_back(AK4GEN_AllResolved_offShellJet2_Phi);
   
+  //define new variable for plot
+  std::vector<double> AK4GEN_AllResolved_dR_J_q;
+  double tempdR = 999.0;
+  vector<int> indexJq(4,-1);
 
   int entries1=t1->GetEntries();
   int entries2=t2->GetEntries();
@@ -142,6 +206,19 @@ void makeplot(){
   
   for (int i=0; i<entries1; ++i){
     t1->GetEntry(i);
+    
+    for (int indexAK4jet=0; indexAK4jet<4; ++indexAK4jet){
+	tempdR = 999.0;
+	for(int indexq=0; indexq<4; ++indexq){
+		if(tempdR > deltaR(Eta_AK4jet[indexAK4jet],Phi_AK4jet[indexAK4jet],Eta_q[indexq],Phi_q[indexq]) && indexq != indexJq[0] && indexq != indexJq[1] && indexq != indexJq[2]){
+			tempdR=	deltaR(Eta_AK4jet[indexAK4jet],Phi_AK4jet[indexAK4jet],Eta_q[indexq],Phi_q[indexq]);
+			indexJq[indexAK4jet]=indexq;
+		}
+	}
+	AK4GEN_AllResolved_dR_J_q.push_back(tempdR);
+    }
+
+	  
     countnumber[0]=countnumber[0]+1;
     // Apply cut
 
@@ -162,7 +239,7 @@ void makeplot(){
       }
     }
     //cut: JJJJqqqq
-    if (AK4GEN_AllResolved_dR_J1_onShell_q < 0.4 && AK4GEN_AllResolved_dR_J2_onShell_q < 0.4 && AK4GEN_AllResolved_dR_J3_offShell_q < 0.4 && AK4GEN_AllResolved_dR_J4_offShell_q < 0.4) {
+    if (AK4GEN_AllResolved_dR_J_q[0] < 0.4 && AK4GEN_AllResolved_dR_J_q[1] < 0.4 && AK4GEN_AllResolved_dR_J_q[2] < 0.4 && AK4GEN_AllResolved_dR_J_q[3] < 0.4) {
       countnumber[3]=countnumber[3]+1;
     }
     //cut:Jqqqq
@@ -192,12 +269,15 @@ void makeplot(){
 	countnumber[11]=countnumber[11]+1;
 	if (AK8Gen_HiggsJet_minDMass_deltaR_HWW < 0.4) {
 	  countnumber[12]=countnumber[12]+1;
+	  if (deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 && deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8) {
+     		countnumber[13]=countnumber[13]+1;
+    		}
 	}
       }
     }
 
 
-    // fill histogram
+    // Fill histogram
 
     AllResolved_onShellWboson_Pt->Fill(AK4GEN_AllResolved_onShellWboson_Pt);
     AllResolved_offShellWboson_Pt->Fill(AK4GEN_AllResolved_offShellWboson_Pt);
@@ -219,7 +299,13 @@ void makeplot(){
     HOneAK8TwoAK4_minMass_dR_AK8_W->Fill(OneAK8TwoAK4_minMass_dR_AK8_W);
     HOneAK8TwoAK4_pTMax_leadingAK4_dR_q->Fill(OneAK8TwoAK4_pTMax_leadingAK4_dR_q);
     HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q->Fill(OneAK8TwoAK4_pTMax_subleadingAK4_dR_q);
-
+	  
+    AK4_AllResolved_dR_J1_q->Fill(AK4GEN_AllResolved_dR_J_q[0]);
+    AK4_AllResolved_dR_J2_q->Fill(AK4GEN_AllResolved_dR_J_q[1]);
+    AK4_AllResolved_dR_J3_q->Fill(AK4GEN_AllResolved_dR_J_q[2]);
+    AK4_AllResolved_dR_J4_q->Fill(AK4GEN_AllResolved_dR_J_q[3]);
+    
+	  
     onShell_WBoson_Pt->Fill(gen_onShell_WBoson_Pt);
     offShell_WBoson_Pt->Fill(gen_offShell_WBoson_Pt);
 
@@ -238,7 +324,7 @@ void makeplot(){
   std::cout <<"HiggsJetmHcut:"<<countnumber[10]<<"->"<<countnumber[10]/countnumber[0]<<std::endl;
   std::cout <<"HiggsJetPtcut:"<<countnumber[11]<<"->"<<countnumber[11]/countnumber[0]<<std::endl;
   std::cout <<"Jqqqqaftermasspt:"<<countnumber[12]<<"->"<<countnumber[12]/countnumber[0]<<std::endl;
-  
+  std::cout <<"Jqqqqaftermasspt0.8:"<<countnumber[13]<<"->"<<countnumber[13]/countnumber[0]<<std::endl;
 
   for (int i=0; i<entries2; ++i){
     t2->GetEntry(i);
@@ -291,14 +377,14 @@ void makeplot(){
   //AK4_AllResolved_Higgs_M->DrawNormalized("same");
   //c5->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/node1/AK4_WWH_mass.png");
   TCanvas *c6 = new TCanvas();
-  AK4_AllResolved_dR_J1_onShell_q->SetLineColor(1);
-  AK4_AllResolved_dR_J2_onShell_q->SetLineColor(2);
-  AK4_AllResolved_dR_J3_offShell_q->SetLineColor(3);
-  AK4_AllResolved_dR_J4_offShell_q->SetLineColor(4);
-  AK4_AllResolved_dR_J1_onShell_q->DrawNormalized();
-  AK4_AllResolved_dR_J2_onShell_q->DrawNormalized("same");
-  AK4_AllResolved_dR_J3_offShell_q->DrawNormalized("same");
-  AK4_AllResolved_dR_J4_offShell_q->DrawNormalized("same");
+  AK4_AllResolved_dR_J1_q->SetLineColor(1);
+  AK4_AllResolved_dR_J2_q->SetLineColor(2);
+  AK4_AllResolved_dR_J3_q->SetLineColor(3);
+  AK4_AllResolved_dR_J4_q->SetLineColor(4);
+  AK4_AllResolved_dR_J1_q->DrawNormalized();
+  AK4_AllResolved_dR_J2_q->DrawNormalized("same");
+  AK4_AllResolved_dR_J3_q->DrawNormalized("same");
+  AK4_AllResolved_dR_J4_q->DrawNormalized("same");
   c6->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK4_JJJJqqqq_dR.png");
   TCanvas *c11 = new TCanvas();
   AK8_HiggsJet_minDMass_deltaR_HWW->DrawNormalized();
