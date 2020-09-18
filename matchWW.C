@@ -440,7 +440,7 @@ void matchWW(){
   HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q->DrawNormalized("same");
  
   c12->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/OneAK8TwoAK4_pTMax_dR.png");
-` TCanvas *c13 = new TCanvas();
+  TCanvas *c13 = new TCanvas();
   testdR->DrawNormalized();
  
   c13->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/test_dR.png");
