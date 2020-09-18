@@ -282,6 +282,7 @@ void matchWW(){
 	countnumber[11]=countnumber[11]+1;
 	if (AK8Gen_HiggsJet_minDMass_deltaR_HWW < 0.4) {
 	  countnumber[12]=countnumber[12]+1;
+	  testdR->Fill(deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi));
 	  if (deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 && deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8) {
      		countnumber[13]=countnumber[13]+1;
     		}
@@ -318,7 +319,7 @@ void matchWW(){
     AK4_AllResolved_dR_J3_q->Fill(AK4GEN_AllResolved_dR_J_q[2]);
     AK4_AllResolved_dR_J4_q->Fill(AK4GEN_AllResolved_dR_J_q[3]);
     
-    testdR->Fill(deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi));
+    
 	  
     onShell_WBoson_Pt->Fill(gen_onShell_WBoson_Pt);
     offShell_WBoson_Pt->Fill(gen_offShell_WBoson_Pt);
