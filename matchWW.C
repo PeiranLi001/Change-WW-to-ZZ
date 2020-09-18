@@ -78,6 +78,9 @@ void matchWW(){
   double gen_Subleading_WBoson_M;
   double gen_onShell_WBoson_Pt;
   double gen_offShell_WBoson_Pt;
+  double gen_HiggsWW_Pt;
+  double gen_HiggsWW_Eta;
+  double gen_HiggsWW_Phi
 
   double gen_leading_ZBoson_Pt;
   double gen_Subleading_ZBoson_Pt;
@@ -119,6 +122,9 @@ void matchWW(){
   double AK8Gen_HiggsJet_minDMass_Pt;
   double AK8Gen_HiggsJet_minDMass_Eta;
   double AK8Gen_HiggsJet_minDMass_Phi;
+  double AK8Gen_HiggsJet_MaxPt_Pt;
+  double AK8Gen_HiggsJet_MaxPt_Eta;
+  double AK8Gen_HiggsJet_MaxPt_Phi;
   double OneAK8TwoAK4_pTMax_leadingAK4_dR_q;
   double OneAK8TwoAK4_pTMax_subleadingAK4_dR_q;
 
@@ -140,6 +146,9 @@ void matchWW(){
   t1->SetBranchAddress("gen_Subleading_WBoson_Pt",&gen_Subleading_WBoson_Pt);
   t1->SetBranchAddress("gen_leading_WBoson_M",&gen_leading_WBoson_M);
   t1->SetBranchAddress("gen_Subleading_WBoson_M",&gen_Subleading_WBoson_M);
+  t1->SetBranchAddress("gen_HiggsWW_Pt",&gen_HiggsWW_Pt);
+  t1->SetBranchAddress("gen_HiggsWW_Eta",&gen_HiggsWW_Eta);
+  t1->SetBranchAddress("gen_HiggsWW_Phi",&gen_HiggsWW_Phi);
 
   t1->SetBranchAddress("AK4GEN_AllResolved_dR_J1_onShell_q",&AK4GEN_AllResolved_dR_J1_onShell_q);
   t1->SetBranchAddress("AK4GEN_AllResolved_dR_J2_onShell_q",&AK4GEN_AllResolved_dR_J2_onShell_q);
@@ -167,6 +176,9 @@ void matchWW(){
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Pt",&AK8Gen_HiggsJet_minDMass_Pt);
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Eta",&AK8Gen_HiggsJet_minDMass_Eta);
   t1->SetBranchAddress("AK8Gen_HiggsJet_minDMass_Phi",&AK8Gen_HiggsJet_minDMass_Phi);
+  t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_Pt",&AK8Gen_HiggsJet_MaxPt_Pt);
+  t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_Eta",&AK8Gen_HiggsJet_MaxPt_Eta);
+  t1->SetBranchAddress("AK8Gen_HiggsJet_MaxPt_Phi",&AK8Gen_HiggsJet_MaxPt_Phi);
   
   t1->SetBranchAddress("AK8Gen_MergedWjets_dR_MaxPt_Leading_W",&AK8Gen_MergedWjets_dR_MaxPt_Leading_W);
   t1->SetBranchAddress("AK8Gen_MergedWjets_dR_MaxPt_SubLeading_W",&AK8Gen_MergedWjets_dR_MaxPt_SubLeading_W);
@@ -289,15 +301,29 @@ void matchWW(){
 	AK8_HiggsJet_minDMass_deltaR_H_q2->Fill(deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi));
 	AK8_HiggsJet_minDMass_deltaR_H_q3->Fill(deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi));
 	AK8_HiggsJet_minDMass_deltaR_H_q4->Fill(deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi));
-	
-	if (deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 && deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8) {
-     		countnumber[13]=countnumber[13]+1;
-    		}
 	if (AK8Gen_HiggsJet_minDMass_deltaR_HWW < 0.8) {
 	  countnumber[12]=countnumber[12]+1;
-		
-	  
 	}
+	if (deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 && deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8 &&deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi) < 0.8) {
+     	  countnumber[13]=countnumber[13]+1;
+    	}
+      }
+    }
+    if (AK8Gen_HiggsJet_MaxPt_M > 100 && AK8Gen_HiggsJet_MaxPt_M < 160) {
+      countnumber[14]=countnumber[14]+1;
+      if (AK8Gen_HiggsJet_MaxPt_Pt > 400) {
+	countnumber[15]=countnumber[15]+1;
+	AK8_HiggsJet_MaxPt_deltaR_H_q1->Fill(deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi));
+	AK8_HiggsJet_MaxPt_deltaR_H_q2->Fill(deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi));
+	AK8_HiggsJet_MaxPt_deltaR_H_q3->Fill(deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi));
+	AK8_HiggsJet_MaxPt_deltaR_H_q4->Fill(deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi));
+
+	if (deltaR(gen_HiggsWW_Eta,gen_HiggsWW_Phi,AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi) < 0.8) {
+	  countnumber[16]=countnumber[16]+1;
+	}
+	if (deltaR(Eta_q[0],Phi_q[0],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi) < 0.8 && deltaR(Eta_q[1],Phi_q[1],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi) < 0.8 &&deltaR(Eta_q[2],Phi_q[2],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi) < 0.8 &&deltaR(Eta_q[3],Phi_q[3],AK8Gen_HiggsJet_MaxPt_Eta,AK8Gen_HiggsJet_MaxPt_Phi) < 0.8) {
+     	  countnumber[17]=countnumber[17]+1;
+    	}
       }
     }
 
@@ -353,7 +379,10 @@ void matchWW(){
   std::cout <<"HiggsJetPtcut:"<<countnumber[11]<<"->"<<countnumber[11]/countnumber[0]<<std::endl;
   std::cout <<"Jqqqqaftermasspt:"<<countnumber[12]<<"->"<<countnumber[12]/countnumber[0]<<std::endl;
   std::cout <<"Jqqqqaftermasspt0.8:"<<countnumber[13]<<"->"<<countnumber[13]/countnumber[0]<<std::endl;
-
+  std::cout <<"HiggsmaxJetmHcut:"<<countnumber[14]<<"->"<<countnumber[14]/countnumber[0]<<std::endl;
+  std::cout <<"HiggsmaxJetPtcut:"<<countnumber[15]<<"->"<<countnumber[15]/countnumber[0]<<std::endl;
+  std::cout <<"maxJqqqqaftermasspt:"<<countnumber[16]<<"->"<<countnumber[16]/countnumber[0]<<std::endl;
+  std::cout <<"maxJqqqqaftermasspt0.8:"<<countnumber[17]<<"->"<<countnumber[17]/countnumber[0]<<std::endl;
   
   
   //TCanvas *c1 = new TCanvas();
@@ -444,9 +473,20 @@ void matchWW(){
   AK8_HiggsJet_minDMass_deltaR_H_q3->DrawNormalized("same");
   AK8_HiggsJet_minDMass_deltaR_H_q4->DrawNormalized("same");
   c13->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_Higgsjets_minDMass_Jqqqq_dR.png");
+  c12->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/OneAK8TwoAK4_pTMax_dR.png");
   TCanvas *c14 = new TCanvas();
-  testdR->DrawNormalized();
+  AK8_HiggsJet_MaxPt_deltaR_H_q1->SetLineColor(1);
+  AK8_HiggsJet_MaxPt_deltaR_H_q2->SetLineColor(2);
+  AK8_HiggsJet_MaxPt_deltaR_H_q3->SetLineColor(3);
+  AK8_HiggsJet_MaxPt_deltaR_H_q4->SetLineColor(4);
+  AK8_HiggsJet_MaxPt_deltaR_H_q1->DrawNormalized();
+  AK8_HiggsJet_MaxPt_deltaR_H_q2->DrawNormalized("same");
+  AK8_HiggsJet_MaxPt_deltaR_H_q3->DrawNormalized("same");
+  AK8_HiggsJet_MaxPt_deltaR_H_q4->DrawNormalized("same");
+  c14->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_Higgsjets_MaxPt_Jqqqq_dR.png");
+  //TCanvas *c14 = new TCanvas();
+  //testdR->DrawNormalized();
  
-  c14->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/test_dR.png");
+  //c14->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/test_dR.png");
 
 }
