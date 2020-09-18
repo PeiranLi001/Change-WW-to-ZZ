@@ -7,10 +7,10 @@
 void matchWW(){
 
   TFile *f1 = TFile::Open("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/GF_HH_SM_slc6_LHEBqrk.root");
-  TFile *f2 = TFile::Open("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/GF_HH_SM_slc6_LHEBqrk_ZZ.root");
+  //TFile *f2 = TFile::Open("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/GF_HH_SM_slc6_LHEBqrk_ZZ.root");
  
   TTree *t1 = (TTree*)f1->Get("otree");
-  TTree *t2 = (TTree*)f2->Get("otree");
+  //TTree *t2 = (TTree*)f2->Get("otree");
 
   //create histograms
   
@@ -174,12 +174,12 @@ void matchWW(){
   t1->SetBranchAddress("OneAK8TwoAK4_pTMax_subleadingAK4_dR_q",&OneAK8TwoAK4_pTMax_subleadingAK4_dR_q);
 
 
-  t2->SetBranchAddress("gen_leading_ZBoson_Pt",&gen_leading_ZBoson_Pt);
-  t2->SetBranchAddress("gen_Subleading_ZBoson_Pt",&gen_Subleading_ZBoson_Pt);
-  t2->SetBranchAddress("gen_leading_ZBoson_M",&gen_leading_ZBoson_M);
-  t2->SetBranchAddress("gen_Subleading_ZBoson_M",&gen_Subleading_ZBoson_M);
-  t2->SetBranchAddress("AK4GEN_AllResolved_onShellZboson_Pt",&AK4GEN_AllResolved_onShellZboson_Pt);
-  t2->SetBranchAddress("AK4GEN_AllResolved_offShellZboson_Pt",&AK4GEN_AllResolved_offShellZboson_Pt);
+  //t2->SetBranchAddress("gen_leading_ZBoson_Pt",&gen_leading_ZBoson_Pt);
+  //t2->SetBranchAddress("gen_Subleading_ZBoson_Pt",&gen_Subleading_ZBoson_Pt);
+  //t2->SetBranchAddress("gen_leading_ZBoson_M",&gen_leading_ZBoson_M);
+  //t2->SetBranchAddress("gen_Subleading_ZBoson_M",&gen_Subleading_ZBoson_M);
+  //t2->SetBranchAddress("AK4GEN_AllResolved_onShellZboson_Pt",&AK4GEN_AllResolved_onShellZboson_Pt);
+  //t2->SetBranchAddress("AK4GEN_AllResolved_offShellZboson_Pt",&AK4GEN_AllResolved_offShellZboson_Pt);
   
 
 
@@ -243,7 +243,7 @@ void matchWW(){
       gen_onShell_WBoson_Pt=gen_Subleading_WBoson_Pt;
       gen_offShell_WBoson_Pt=gen_leading_WBoson_Pt;
     }
-    // cutflow
+    // Apply cut flow
     if (AK4GEN_AllResolved_Higgs_M > 100 && AK4GEN_AllResolved_Higgs_M < 160 && AK4GEN_AllResolved_onShellWboson_M > 60 && AK4GEN_AllResolved_onShellWboson_M < 105){
       countnumber[1]=countnumber[1]+1;
       if (AK4GEN_AllResolved_onShellWboson_Pt < 200 && AK4GEN_AllResolved_offShellWboson_Pt < 200){
@@ -324,6 +324,7 @@ void matchWW(){
 
     
   }
+  // cutflow
   std::cout <<"Total:"<<countnumber[0]<<"->"<<countnumber[0]/countnumber[0]<<std::endl;
   std::cout <<"Cut1:"<<countnumber[1]<<"->"<<countnumber[1]/countnumber[0]<<std::endl;
   std::cout <<"Cut2:"<<countnumber[2]<<"->"<<countnumber[2]/countnumber[0]<<std::endl;
@@ -339,31 +340,7 @@ void matchWW(){
   std::cout <<"Jqqqqaftermasspt:"<<countnumber[12]<<"->"<<countnumber[12]/countnumber[0]<<std::endl;
   std::cout <<"Jqqqqaftermasspt0.8:"<<countnumber[13]<<"->"<<countnumber[13]/countnumber[0]<<std::endl;
 
-  for (int i=0; i<entries2; ++i){
-    t2->GetEntry(i);
-
-    // Apply cut
-
-    // if (gen_leading_WpJets_Pt>15)
-    if (abs(gen_leading_ZBoson_M-90) <= abs(gen_Subleading_ZBoson_M-90)){
-      gen_onShell_ZBoson_Pt=gen_leading_ZBoson_Pt;
-      gen_offShell_ZBoson_Pt=gen_Subleading_ZBoson_Pt;
-    }
-    if (abs(gen_leading_ZBoson_M-90) > abs(gen_Subleading_ZBoson_M-90)){
-      gen_onShell_ZBoson_Pt=gen_Subleading_ZBoson_Pt;
-      gen_offShell_ZBoson_Pt=gen_leading_ZBoson_Pt;
-    }
-
-
-
-
-    // fill histogram
-
-    AllResolved_onShellZboson_Pt->Fill(AK4GEN_AllResolved_onShellZboson_Pt);
-    AllResolved_offShellZboson_Pt->Fill(AK4GEN_AllResolved_offShellZboson_Pt);
-    onShell_ZBoson_Pt->Fill(gen_onShell_ZBoson_Pt);
-    offShell_ZBoson_Pt->Fill(gen_offShell_ZBoson_Pt);
-  }
+  
   
   //TCanvas *c1 = new TCanvas();
   //AllResolved_onShellWboson_Pt->DrawNormalized();
@@ -399,42 +376,42 @@ void matchWW(){
   AK4_AllResolved_dR_J3_q->DrawNormalized("same");
   AK4_AllResolved_dR_J4_q->DrawNormalized("same");
   c6->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK4_JJJJqqqq_dR.png");
-  TCanvas *c11 = new TCanvas();
+  TCanvas *c7 = new TCanvas();
   AK8_HiggsJet_minDMass_deltaR_HWW->DrawNormalized();
   
-  c11->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_Higgsjets_minDMass_dR.png");
-  TCanvas *c7 = new TCanvas();
+  c7->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_Higgsjets_minDMass_dR.png");
+  TCanvas *c8 = new TCanvas();
   AK8_MergedWjets_dR_MaxPt_Leading_W->SetLineColor(1);
   AK8_MergedWjets_dR_MaxPt_SubLeading_W->SetLineColor(2);
   
   AK8_MergedWjets_dR_MaxPt_Leading_W->DrawNormalized();
   AK8_MergedWjets_dR_MaxPt_SubLeading_W->DrawNormalized("same");
  
-  c7->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_MergedWjets_MaxPt_dR.png");
-  TCanvas *c8 = new TCanvas();
+  c8->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_MergedWjets_MaxPt_dR.png");
+  TCanvas *c9 = new TCanvas();
   AK8_MergedWjets_dR_minDMass_Leading_W->SetLineColor(1);
   AK8_MergedWjets_dR_minDMass_SubLeading_W->SetLineColor(2);
   
   AK8_MergedWjets_dR_minDMass_Leading_W->DrawNormalized();
   AK8_MergedWjets_dR_minDMass_SubLeading_W->DrawNormalized("same");
  
-  c8->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_MergedWjets_minDMass_dR.png");
-  TCanvas *c9 = new TCanvas();
+  c9->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_MergedWjets_minDMass_dR.png");
+  TCanvas *c10 = new TCanvas();
   AK8_MergedWjets_dR_minWminHmass_Leading_W->SetLineColor(1);
   AK8_MergedWjets_dR_minWminHmass_SubLeading_W->SetLineColor(2);
   
   AK8_MergedWjets_dR_minWminHmass_Leading_W->DrawNormalized();
   AK8_MergedWjets_dR_minWminHmass_SubLeading_W->DrawNormalized("same");
  
-  c9->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_MergedWjets_minWminHmass_dR.png");
-  TCanvas *c10 = new TCanvas();
+  c10->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_MergedWjets_minWminHmass_dR.png");
+  TCanvas *c11 = new TCanvas();
   HOneAK8TwoAK4_minMass_dR_ReconsW_AK4_W->SetLineColor(1);
   HOneAK8TwoAK4_minMass_dR_AK8_W->SetLineColor(2);
   
   HOneAK8TwoAK4_minMass_dR_ReconsW_AK4_W->DrawNormalized();
   HOneAK8TwoAK4_minMass_dR_AK8_W->DrawNormalized("same");
  
-  c10->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/OneAK8TwoAK4_minMass_dR.png");
+  c11->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/OneAK8TwoAK4_minMass_dR.png");
   TCanvas *c12 = new TCanvas();
   HOneAK8TwoAK4_pTMax_leadingAK4_dR_q->SetLineColor(1);
   HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q->SetLineColor(2);
