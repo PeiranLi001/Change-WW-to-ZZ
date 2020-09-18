@@ -44,7 +44,7 @@ void matchWW(){
   TH1F *AK4_AllResolved_dR_J2_q = new TH1F("AK4_AllResolved_dR_J2_q","AK4_AllResolved_dR_J2_q;dR(J2,q);Normalized Events",25,0,4.5);
   TH1F *AK4_AllResolved_dR_J3_q = new TH1F("AK4_AllResolved_dR_J3_q","AK4_AllResolved_dR_J3_q;dR(J3,q);Normalized Events",25,0,4.5);
   TH1F *AK4_AllResolved_dR_J4_q = new TH1F("AK4_AllResolved_dR_J4_q","AK4_AllResolved_dR_J4_q;dR(J4,q);Normalized Events",25,0,4.5);
-  
+  TH1F *testdR = new TH1F("testdR","testdR;dR(J1,q);Normalized Events",25,0,4.5);
 	
   
 
@@ -314,6 +314,7 @@ void matchWW(){
     AK4_AllResolved_dR_J3_q->Fill(AK4GEN_AllResolved_dR_J_q[2]);
     AK4_AllResolved_dR_J4_q->Fill(AK4GEN_AllResolved_dR_J_q[3]);
     
+    testdR->Fill(deltaR(Eta_AK4jet[1],Phi_AK4jet[1],Eta_q[1],Phi_q[1]));
 	  
     onShell_WBoson_Pt->Fill(gen_onShell_WBoson_Pt);
     offShell_WBoson_Pt->Fill(gen_offShell_WBoson_Pt);
@@ -438,7 +439,10 @@ void matchWW(){
   HOneAK8TwoAK4_pTMax_leadingAK4_dR_q->DrawNormalized();
   HOneAK8TwoAK4_pTMax_subleadingAK4_dR_q->DrawNormalized("same");
  
-  c12->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/OneAK8TwoAK4_pTMax__dR.png");
-
+  c12->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/OneAK8TwoAK4_pTMax_dR.png");
+` TCanvas *c13 = new TCanvas();
+  testdR->DrawNormalized();
+ 
+  c13->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/test_dR.png");
 
 }
