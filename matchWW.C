@@ -1,5 +1,5 @@
-//#include "DataFormats/Math/interface/deltaR.h"
-//#include "DataFormats/Math/interface/deltaPhi.h"
+#include "DataFormats/Math/interface/deltaR.h"
+#include "DataFormats/Math/interface/deltaPhi.h"
 #include <vector>
 #include "TH1F.h"
 #include "TLorentzVector.h"
@@ -314,7 +314,7 @@ void matchWW(){
     AK4_AllResolved_dR_J3_q->Fill(AK4GEN_AllResolved_dR_J_q[2]);
     AK4_AllResolved_dR_J4_q->Fill(AK4GEN_AllResolved_dR_J_q[3]);
     
-    testdR->Fill(gen_leading_WpJets_Eta);
+    testdR->Fill(Eta_AK4jet[1]);
 	  
     onShell_WBoson_Pt->Fill(gen_onShell_WBoson_Pt);
     offShell_WBoson_Pt->Fill(gen_offShell_WBoson_Pt);
