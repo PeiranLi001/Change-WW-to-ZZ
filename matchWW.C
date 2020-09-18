@@ -490,9 +490,9 @@ void matchWW(){
   AK8_HiggsJet_MaxPt_deltaR_H_q3->DrawNormalized("same");
   AK8_HiggsJet_MaxPt_deltaR_H_q4->DrawNormalized("same");
   c14->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/AK8_Higgsjets_MaxPt_Jqqqq_dR.png");
-  //TCanvas *c14 = new TCanvas();
-  //testdR->DrawNormalized();
+  TCanvas *c15 = new TCanvas();
+  testdR->DrawNormalized();
  
-  //c14->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/test_dR.png");
+  c15->SaveAs("/afs/cern.ch/user/l/lipe/private/HHtoWWgg/CMSSW_10_2_22/src/GEN-SIM-analyzer/GenAnalyzer/Plotting-Macro/makeplot/SM/test_dR.png");
 
 }
