@@ -362,7 +362,7 @@ void matchWW(){
     AK4_AllResolved_dR_J3_q->Fill(AK4GEN_AllResolved_dR_J_q[2]);
     AK4_AllResolved_dR_J4_q->Fill(AK4GEN_AllResolved_dR_J_q[3]);
     
-    testdR->Fill(deltaR(AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi, gen_HiggsWW_Eta, gen_HiggsWW_Phi));
+    testdR->Fill(deltaR(AK8Gen_HiggsJet_minDMass_Eta,AK8Gen_HiggsJet_minDMass_Phi, gen_leading_WpJets_Eta, gen_leading_WpJets_Phi));
 
 	  
     onShell_WBoson_Pt->Fill(gen_onShell_WBoson_Pt);
