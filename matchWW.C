@@ -34,6 +34,10 @@ void matchWW(){
   TH1F *AK8_HiggsJet_minDMass_deltaR_H_q2 = new TH1F("AK8_HiggsJet_minDMass_deltaR_H_q2","AK8_HiggsJet_minDMass_deltaR_H_q2",25,0,4.5);
   TH1F *AK8_HiggsJet_minDMass_deltaR_H_q3 = new TH1F("AK8_HiggsJet_minDMass_deltaR_H_q3","AK8_HiggsJet_minDMass_deltaR_H_q3",25,0,4.5);
   TH1F *AK8_HiggsJet_minDMass_deltaR_H_q4 = new TH1F("AK8_HiggsJet_minDMass_deltaR_H_q4","AK8_HiggsJet_minDMass_deltaR_H_q4",25,0,4.5);
+  TH1F *AK8_HiggsJet_MaxPt_deltaR_H_q1 = new TH1F("AK8_HiggsJet_MaxPt_deltaR_H_q1","AK8_HiggsJet_MaxPt_deltaR_H_q1",25,0,4.5);
+  TH1F *AK8_HiggsJet_MaxPt_deltaR_H_q2 = new TH1F("AK8_HiggsJet_MaxPt_deltaR_H_q2","AK8_HiggsJet_MaxPt_deltaR_H_q2",25,0,4.5);
+  TH1F *AK8_HiggsJet_MaxPt_deltaR_H_q3 = new TH1F("AK8_HiggsJet_MaxPt_deltaR_H_q3","AK8_HiggsJet_MaxPt_deltaR_H_q3",25,0,4.5);
+  TH1F *AK8_HiggsJet_MaxPt_deltaR_H_q4 = new TH1F("AK8_HiggsJet_MaxPt_deltaR_H_q4","AK8_HiggsJet_MaxPt_deltaR_H_q4",25,0,4.5);
   
   TH1F *AK8_MergedWjets_dR_MaxPt_Leading_W = new TH1F("AK8_MergedWjets_dR_MaxPt_Leading_W","AK8_MergedWjets_dR_MaxPt_Leading_W",25,0,4.5);
   TH1F *AK8_MergedWjets_dR_MaxPt_SubLeading_W = new TH1F("AK8_MergedWjets_dR_MaxPt_SubLeading_W","AK8_MergedWjets_dR_MaxPt_SubLeading_W",25,0,4.5);
