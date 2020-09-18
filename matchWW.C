@@ -182,27 +182,7 @@ void matchWW(){
   t2->SetBranchAddress("AK4GEN_AllResolved_offShellZboson_Pt",&AK4GEN_AllResolved_offShellZboson_Pt);
   
 
-  std::vector<double> Eta_q;
-  std::vector<double> Phi_q;
-  std::vector<double> Eta_AK4jet;
-  std::vector<double> Phi_AK4jet;
-  Eta_q.push_back(gen_leading_WpJets_Eta);
-  Eta_q.push_back(gen_Subleading_WpJets_Eta);
-  Eta_q.push_back(gen_leading_WmJets_Eta);
-  Eta_q.push_back(gen_Subleading_WmJets_Eta);
-  Eta_AK4jet.push_back(AK4GEN_AllResolved_onShellJet1_Eta);
-  Eta_AK4jet.push_back(AK4GEN_AllResolved_onShellJet2_Eta);
-  Eta_AK4jet.push_back(AK4GEN_AllResolved_offShellJet1_Eta);
-  Eta_AK4jet.push_back(AK4GEN_AllResolved_offShellJet2_Eta);
-  
-  Phi_q.push_back(gen_leading_WpJets_Eta);
-  Phi_q.push_back(gen_Subleading_WpJets_Eta);
-  Phi_q.push_back(gen_leading_WmJets_Eta);
-  Phi_q.push_back(gen_Subleading_WmJets_Eta);
-  Phi_AK4jet.push_back(AK4GEN_AllResolved_onShellJet1_Phi);
-  Phi_AK4jet.push_back(AK4GEN_AllResolved_onShellJet2_Phi);
-  Phi_AK4jet.push_back(AK4GEN_AllResolved_offShellJet1_Phi);
-  Phi_AK4jet.push_back(AK4GEN_AllResolved_offShellJet2_Phi);
+
   
   //define new variable for plot
   std::vector<double> AK4GEN_AllResolved_dR_J_q;
