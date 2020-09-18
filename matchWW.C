@@ -210,14 +210,14 @@ void matchWW(){
     Eta_AK4jet[2]=(AK4GEN_AllResolved_offShellJet1_Eta);
     Eta_AK4jet[3]=(AK4GEN_AllResolved_offShellJet2_Eta);
   
-    Phi_q.[0]=(gen_leading_WpJets_Eta);
-    Phi_q.[1]=(gen_Subleading_WpJets_Eta);
-    Phi_q.[2]=(gen_leading_WmJets_Eta);
-    Phi_q.[3]=(gen_Subleading_WmJets_Eta);
-    Phi_AK4jet.[0]=(AK4GEN_AllResolved_onShellJet1_Phi);
-    Phi_AK4jet.[1]=(AK4GEN_AllResolved_onShellJet2_Phi);
-    Phi_AK4jet.[2]=(AK4GEN_AllResolved_offShellJet1_Phi);
-    Phi_AK4jet.[3]=(AK4GEN_AllResolved_offShellJet2_Phi);
+    Phi_q[0]=(gen_leading_WpJets_Eta);
+    Phi_q[1]=(gen_Subleading_WpJets_Eta);
+    Phi_q[2]=(gen_leading_WmJets_Eta);
+    Phi_q[3]=(gen_Subleading_WmJets_Eta);
+    Phi_AK4jet[0]=(AK4GEN_AllResolved_onShellJet1_Phi);
+    Phi_AK4jet[1]=(AK4GEN_AllResolved_onShellJet2_Phi);
+    Phi_AK4jet[2]=(AK4GEN_AllResolved_offShellJet1_Phi);
+    Phi_AK4jet[3]=(AK4GEN_AllResolved_offShellJet2_Phi);
     
     for (int indexAK4jet=0; indexAK4jet<4; ++indexAK4jet){
 	tempdR = 999.0;
