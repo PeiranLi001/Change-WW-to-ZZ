@@ -196,10 +196,10 @@ void matchWW(){
   
   for (int i=0; i<entries1; ++i){
     t1->GetEntry(i);
-    std::vector<double> Eta_q;
-    std::vector<double> Phi_q;
-    std::vector<double> Eta_AK4jet;
-    std::vector<double> Phi_AK4jet;
+    vector<double> Eta_q(4);
+    vector<double> Phi_q(4);
+    vector<double> Eta_AK4jet(4);
+    vector<double> Phi_AK4jet(4);
     Eta_q.push_back(gen_leading_WpJets_Eta);
     Eta_q.push_back(gen_Subleading_WpJets_Eta);
     Eta_q.push_back(gen_leading_WmJets_Eta);
@@ -316,7 +316,7 @@ void matchWW(){
     AK4_AllResolved_dR_J3_q->Fill(AK4GEN_AllResolved_dR_J_q[2]);
     AK4_AllResolved_dR_J4_q->Fill(AK4GEN_AllResolved_dR_J_q[3]);
     
-    testdR->Fill(AK4GEN_AllResolved_onShellJet1_Eta);
+    testdR->Fill(Eta_AK4jet[0]);
 	  
     onShell_WBoson_Pt->Fill(gen_onShell_WBoson_Pt);
     offShell_WBoson_Pt->Fill(gen_offShell_WBoson_Pt);
